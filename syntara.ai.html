@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syntara | Intelligent Text Studio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #dfe9f3, #ffffff);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 48px;
+    background: linear-gradient(90deg, #7f9cf5, #9f7aea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    resize: none;
+    outline: none;
+}
+
+.buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.analyze {
+    background: #7f9cf5;
+    color: white;
+}
+
+.humanize {
+    background: #9f7aea;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.stats {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.output {
+    margin-top: 20px;
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 12px;
+    min-height: 60px;
+    font-size: 15px;
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+    padding: 20px;
+    color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Syntara</h1>
+    <div class="subtitle">Intelligent Text Studio • Word Counter & AI Humanizer</div>
+</header>
+
+<div class="container">
+
+<textarea id="textInput" placeholder="Paste your text here..."></textarea>
+
+<div class="buttons">
+    <button class="analyze" onclick="analyzeText()">Analyze Text</button>
+    <button class="humanize" onclick="humanizeText()">Humanize Text</button>
+</div>
+
+<div class="stats" id="stats">
+    Words: 0 | Characters: 0
+</div>
+
+<div class="output" id="output">
+    Your humanized content will appear here...
+</div>
+
+</div>
+
+<footer>
+    © 2026 Syntara • Built by <strong>Yuvaann Bodapudi</strong> • 
+    <a href="mailto:yuvaannbodapudi@gmail.com">yuvaannbodapudi@gmail.com</a>
+</footer>
+
+<script>
+function analyzeText() {
+    let text = document.getElementById("textInput").value.trim();
+    let words = text.length > 0 ? text.split(/\s+/).length : 0;
+    let characters = text.length;
+    document.getElementById("stats").innerHTML =
+        "Words: " + words + " | Characters: " + characters;
+}
+
+function humanizeText() {
+    let text = document.getElementById("textInput").value;
+    if(text.trim() === "") {
+        document.getElementById("output").innerText = "Please enter some text first.";
+        return;
+    }
+
+    // Smart rewrite effect (basic AI-style humanizer simulation)
+    let humanized = text
+        .replace(/\butilize\b/gi, "use")
+        .replace(/\btherefore\b/gi, "so")
+        .replace(/\bmoreover\b/gi, "also")
+        .replace(/\bhowever\b/gi, "but")
+        .replace(/\bIn conclusion\b/gi, "To sum it up")
+        .replace(/\bAdditionally\b/gi, "Plus")
+        .replace(/\bFurthermore\b/gi, "On top of that");
+
+    document.getElementById("output").innerText =
+        "Humanized Version:\n\n" + humanized;
+}
+</script>
+
+</body>
+</html>
